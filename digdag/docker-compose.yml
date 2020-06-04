@@ -1,0 +1,15 @@
+version: '3'
+services:
+  digdag_server:
+    image: szyn/docker-digdag:latest
+    ports:
+      - "65432:65432"
+    volumes:
+      - .docker:/opt/etc/digdag
+    command: ["server", "-c", "/opt/etc/digdag/server.properties"]
+    networks:
+      - postgresql_default
+
+networks:
+  postgresql_default:
+    external: true

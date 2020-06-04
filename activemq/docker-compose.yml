@@ -1,0 +1,18 @@
+version: '3'
+services:
+  activemq:
+    image: vromero/activemq-artemis:2-alpine-latest
+    ports:
+      # ui
+      - "8161:8161"
+      # jms
+      - "61616:61616"
+    environment:
+      ARTEMIS_USERNAME: activemq
+      ARTEMIS_PASSWORD: secret
+    volumes:
+      - activemq-volume:/var/lib/artemis/data
+
+volumes:
+  activemq-volume:
+    driver: local

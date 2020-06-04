@@ -1,0 +1,16 @@
+version: '3'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 1433:1433
+    environment:
+      TZ: "Asia/Tokyo"
+      ACCEPT_EULA: Y
+      SA_PASSWORD: fDKPTPSGZNR1uMHW
+    volumes:
+      - sqlserver-volume:/var/opt/mssql
+
+volumes:
+  sqlserver-volume:
+    driver: local

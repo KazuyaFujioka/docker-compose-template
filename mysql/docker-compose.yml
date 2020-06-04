@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    environment:
+      TZ: "Asia/Tokyo"
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - mysql-volume:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+
+volumes:
+  mysql-volume:
+    driver: local
